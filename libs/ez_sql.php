@@ -10,11 +10,6 @@
 	// ==================================================================
 	// User Settings -- CHANGE HERE
 
-	define("EZSQL_DB_USER", "");			// <-- mysql db user
-	define("EZSQL_DB_PASSWORD", "");		// <-- mysql db password
-	define("EZSQL_DB_NAME", "mysql");		// <-- mysql db pname
-	define("EZSQL_DB_HOST", "localhost");	// <-- mysql server host
-			
 	// ==================================================================
 	//	ezSQL Constants
 	define("EZSQL_VERSION","1.01");
@@ -38,10 +33,10 @@
 			if ( ! $this->dbh )
 			{
 				$this->print_error("<ol><b>Error establishing a database connection!</b><li>Are you sure you have the correct user/password?<li>Are you sure that you have typed the correct hostname?<li>Are you sure that the database server is running?</ol>");
+				return false;
 			}
 			
-				
-			$this->select($dbname);
+			return $this->select($dbname);
 		
 		}
 		
@@ -53,7 +48,9 @@
 			if ( !@mysql_select_db($db,$this->dbh))
 			{
 				$this->print_error("<ol><b>Error selecting database <u>$db</u>!</b><li>Are you sure it exists?<li>Are you sure there is a valid database connection?</ol>");
+				return false;
 			}
+			return true;
 		}
 	
 		// ==================================================================
@@ -419,7 +416,5 @@
 	
 	
 	}
-
-$db = new db(EZSQL_DB_USER, EZSQL_DB_PASSWORD, EZSQL_DB_NAME, EZSQL_DB_HOST);
 
 ?>
