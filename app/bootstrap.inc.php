@@ -16,21 +16,6 @@
 	
 	require_once(PATH_APP . 'utils.inc.php');
 	
-	// smarty
-	
-	if (!is_writeable(PATH_CACHE . 'smarty/') || !is_writable(PATH_CACHE . 'smarty/cache/')) {
-		
-		fatalError('Compilation directory is not writeable');
-		
-	}
-	
-	require_once(PATH_LIBS . 'smarty/Smarty.class.php');
-	
-	$smarty = new Smarty();
-	$smarty->template_dir = PATH_APP   . 'templates/';
-	$smarty->cache_dir 	  = PATH_CACHE . 'smarty/cache/';
-	$smarty->compile_dir  = PATH_CACHE . 'smarty/';
-	
 	// db
 	
 	require_once(PATH_CLASSES . 'Database.php');

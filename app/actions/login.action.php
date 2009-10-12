@@ -10,7 +10,9 @@
 		
 		public function index() {
 			
-			print 'wwww';
+			$tpl = &Template::getInstance();
+
+			$tpl->display('login/index.htm');
 			
 		}
 		
